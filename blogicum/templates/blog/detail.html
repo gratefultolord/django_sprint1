@@ -1,19 +1,7 @@
 {% extends 'base.html' %}
-{% load static %}
+
 {% block title %}{{ post.location }}. {{ post.date }}{% endblock %}
+
 {% block content %}
-<article>
-  <ul>
-    <li>
-      Место: {{ post.location }}             
-    </li>
-    <li>
-      Дата: {{ post.date }}
-    </li>
-    <li>
-      Категория: {{ post.category }}
-    </li>
-  </ul>         
-  <p>{{ post.text }}</p>          
-</article>
+  {% include 'includes/blog/post.html' with truncating_text=False %}
 {% endblock %}

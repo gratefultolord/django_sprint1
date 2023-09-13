@@ -52,13 +52,12 @@ def index(request):
 
 
 def post_detail(request, pk):
-    post = None
-    for p in posts:
-        if p['id'] == pk:
-            post = p
-            break
+    try:
+        selected_post = next(post for post in posts if post['id'] == pk)
+    except StopIteration:
+        selected_post = None
     template = 'blog/detail.html'
-    context = {'post': post} if post else {}
+    context = {'post': selected_post}
     return render(request, template, context)
 
 
